@@ -20,7 +20,7 @@ public class PizzaDao
             sqlConnection.Open();
             using(SqliteCommand cmd = sqlConnection.CreateCommand())
             {
-                cmd.CommandText = @"CREATE TABLE TB_PIZZA
+                cmd.CommandText = @"CREATE TABLE IF NOT EXISTS  TB_PIZZA
                 (
                     ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     Sabor VARCHAR(50) not null,
@@ -31,22 +31,5 @@ public class PizzaDao
             }
         }
     }
-
-
-    /*
-             using (SqliteCommand command = new SqliteCommand() { Connection = connection })
-             {
-                 command.CommandText =
-                     @"CREATE TABLE IF NOT EXISTS Pizza
-                      (
-                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                         Sabor TEXT,
-                         Descricao TEXT,
-                         TamanhoDePizza INTEGER
-                         
-                      )";
-                 command.ExecuteNonQuery();
-             }
-         }*/
 
 }
