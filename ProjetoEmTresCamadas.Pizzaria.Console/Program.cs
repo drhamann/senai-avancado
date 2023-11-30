@@ -2,7 +2,7 @@
 using ProjetoEmTresCamadas.Pizzaria.DAO;
 using ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio;
 
-PizzaDao pizzaDao = new PizzaDao();
+var pizzaDao = new PizzaDao();
 
 
 Console.WriteLine("Bem vindo a nossa pizaria");
@@ -19,6 +19,7 @@ if(resposta == "S")
     var tamanho = Console.ReadLine();
     Console.WriteLine($"O tamanho escolhido foi {pizza.DefinirTamanho(tamanho)}");
 
+    pizzaDao.CriarPizza(pizza);
     Console.WriteLine($"Sua pizza é {pizza}");
 
 }
