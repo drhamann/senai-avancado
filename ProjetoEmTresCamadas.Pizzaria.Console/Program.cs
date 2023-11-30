@@ -4,6 +4,7 @@ using ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio;
 
 var pizzaDao = new PizzaDao();
 
+var pizzas = pizzaDao.ObterPizzas();
 
 Console.WriteLine("Bem vindo a nossa pizaria");
 Console.WriteLine("Gostaria de uma pizza, S para sim e N para não?");
@@ -23,6 +24,7 @@ if(resposta == "S")
     Console.WriteLine($"Sua pizza é {pizza}");
 
 }
+
 
 
 Console.WriteLine("Fim");

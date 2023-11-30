@@ -12,4 +12,10 @@
     <ProjectReference Include="..\ProjetoEmTresCamadas\ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio\ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Pizza.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
