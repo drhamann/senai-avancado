@@ -1,7 +1,14 @@
 ﻿using Microsoft.Data.Sqlite;
-using ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio;
 
 namespace ProjetoEmTresCamadas.Pizzaria.DAO;
+
+public class PizzaVo : EntidadeBaseVo
+{
+    public string Sabor { get; set; }
+    public int TamanhoDePizza { get; set; }
+    public string Descricao { get; set; }
+    public double Valor { get; set; }
+}
 
 public class PizzaDao
 {
@@ -32,7 +39,7 @@ public class PizzaDao
 
     }
 
-    public void CriarPizza(Pizza pizzaVo)
+    public int CriarPizza(PizzaVo pizzaVo)
     {
         using (var sqlConnection = new SqliteConnection(ConnectionString))
         {
@@ -48,14 +55,14 @@ public class PizzaDao
                 command.Parameters.AddWithValue("@Descricao", pizzaVo.Descricao);
                 command.Parameters.AddWithValue("@TAMANHODAPIZZA", (int)pizzaVo.TamanhoDePizza);
 
-                command.ExecuteNonQuery();                
+                return command.ExecuteNonQuery();                
             }
         }
     }
 
-    public List<Pizza> ObterPizzas()
+    public List<PizzaVo> ObterPizzas()
     {
-        List<Pizza> pizzas = new List<Pizza>();
+        List<PizzaVo> pizzas = new List<PizzaVo>();
         using (var sqlConnection = new SqliteConnection(ConnectionString))
         {
             sqlConnection.Open();
@@ -66,13 +73,12 @@ public class PizzaDao
                 {
                     while (reader.Read())
                     {
-                        Pizza pizza = new Pizza
+                        PizzaVo pizza = new PizzaVo
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             Sabor = reader["Sabor"].ToString(),
                             Descricao = reader["Descricao"].ToString(),
-                            TamanhoDePizza = (TamanhoDePizza)
-                            Convert.ToInt32(reader["TAMANHODAPIZZA"])
+                            TamanhoDePizza = Convert.ToInt32(reader["TAMANHODAPIZZA"])
                         };
                         pizzas.Add(pizza);
                     }

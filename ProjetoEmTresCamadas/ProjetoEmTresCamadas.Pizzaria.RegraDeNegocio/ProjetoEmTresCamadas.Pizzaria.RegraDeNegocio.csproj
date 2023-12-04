@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjetoEmTresCamadas.Pizzaria.DAO\ProjetoEmTresCamadas.Pizzaria.DAO.csproj" />
+  </ItemGroup>
+
 </Project>

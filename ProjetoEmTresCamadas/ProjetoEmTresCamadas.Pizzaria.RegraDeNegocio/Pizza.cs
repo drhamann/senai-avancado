@@ -1,15 +1,19 @@
 ﻿namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio;
 
 
-public class Pizza
+public class Pizza : EntidadeBase
 {
-    public int Id { get; set; }
     public string Sabor { get; set; }
     public TamanhoDePizza TamanhoDePizza { get; set; }
     public string Descricao { get; set; }
+    public double Valor { get; set; }
+
     public Pizza() 
     { 
         Descricao = string.Empty;    
+        Valor = 0;
+        TamanhoDePizza = TamanhoDePizza.Pequena;
+        Sabor = string.Empty;
     }
 
     public string DefinirSabor(string sabor)
