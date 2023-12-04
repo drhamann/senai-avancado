@@ -31,7 +31,8 @@ public class PizzaDao
                     ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     Sabor VARCHAR(50) not null,
                     Descricao VARCHAR(100),
-                    TAMANHODAPIZZA INTEGER
+                    TAMANHODAPIZZA INTEGER,
+                    VALOR REAL
                 )";
                 cmd.ExecuteNonQuery();
             }
@@ -48,12 +49,13 @@ public class PizzaDao
             using (var command = sqlConnection.CreateCommand())
             {
                 command.CommandText = @"
-                INSERT INTO TB_PIZZA (Sabor, Descricao, TAMANHODAPIZZA)
-                VALUES (@Sabor, @Descricao, @TAMANHODAPIZZA)";
+                INSERT INTO TB_PIZZA (Sabor, Descricao, TAMANHODAPIZZA, VALOR)
+                VALUES (@Sabor, @Descricao, @TAMANHODAPIZZA, @VALOR)";
                 
                 command.Parameters.AddWithValue("@Sabor", pizzaVo.Sabor);
                 command.Parameters.AddWithValue("@Descricao", pizzaVo.Descricao);
                 command.Parameters.AddWithValue("@TAMANHODAPIZZA", (int)pizzaVo.TamanhoDePizza);
+                command.Parameters.AddWithValue("@VALOR", pizzaVo.Valor);
 
                 return command.ExecuteNonQuery();                
             }
@@ -78,7 +80,8 @@ public class PizzaDao
                             Id = Convert.ToInt32(reader["Id"]),
                             Sabor = reader["Sabor"].ToString(),
                             Descricao = reader["Descricao"].ToString(),
-                            TamanhoDePizza = Convert.ToInt32(reader["TAMANHODAPIZZA"])
+                            TamanhoDePizza = Convert.ToInt32(reader["TAMANHODAPIZZA"]),
+                            Valor = Convert.ToDouble(reader["VALOR"])
                         };
                         pizzas.Add(pizza);
                     }
