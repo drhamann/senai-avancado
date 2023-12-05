@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
+namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio.Entidades
 {
     public class Cliente : EntidadeBase
     {

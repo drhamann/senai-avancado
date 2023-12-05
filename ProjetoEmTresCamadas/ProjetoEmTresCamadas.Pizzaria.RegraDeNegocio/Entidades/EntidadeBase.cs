@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjetoEmTresCamadas.Pizzaria.DAO
+namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio.Entidades
 {
-    public class EntidadeBaseVo
+    public abstract class EntidadeBase
     {
         public int Id { get; set; }
     }

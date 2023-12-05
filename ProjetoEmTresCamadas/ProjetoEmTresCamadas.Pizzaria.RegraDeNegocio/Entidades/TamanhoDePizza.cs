@@ -1,4 +1,4 @@
-﻿namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio
+﻿namespace ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio.Entidades
 {
     public enum TamanhoDePizza
     {

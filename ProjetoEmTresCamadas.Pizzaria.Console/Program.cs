@@ -1,6 +1,6 @@
 ﻿
 using ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio;
-
+using ProjetoEmTresCamadas.Pizzaria.RegraDeNegocio.Entidades;
 
 var pizzaService = new PizzaService();
 
