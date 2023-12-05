@@ -6,15 +6,18 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO;
 public abstract class BaseDao<T> : IDao<T>
 {
     protected const string CONNECTION_STRING = "Data Source=Pizza.db";
-    public string TabelaQuery { get; set; }
+    public string TabelaCreateQuery { get; set; }
     public string SelectQuery { get; set; }
     public string InsertQuery { get; set; }
 
-    protected BaseDao(string tabelaQuery, string selectQuery, string insertQuery)
+    public string TabelaName { get; set; }
+
+    protected BaseDao(string tabelaQuery, string selectQuery, string insertQuery, string tabelaName)
     {
-        TabelaQuery = tabelaQuery;
+        TabelaCreateQuery = tabelaQuery;
         SelectQuery = selectQuery;
         InsertQuery = insertQuery;
+        TabelaName = tabelaName;
         CriarBancoDeDados();
     }
 
@@ -26,7 +29,7 @@ public abstract class BaseDao<T> : IDao<T>
 
             using (var cmd = sqlConnection.CreateCommand())
             {
-                cmd.CommandText = TabelaQuery;
+                cmd.CommandText = TabelaCreateQuery;
                 cmd.ExecuteNonQuery();
             }
         }
@@ -73,7 +76,13 @@ public abstract class BaseDao<T> : IDao<T>
                     command.Parameters.AddWithValue($"@{propriedade.Name}", propriedade.GetValue(objetoVo) ?? DBNull.Value);
                 }
 
-                return command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
+            }
+            using (var command = sqlConnection.CreateCommand())
+            {
+                command.CommandText = $"SELECT last_insert_rowid() FROM {TabelaName};";
+                var resultado = command.ExecuteScalar();
+                return Convert.ToInt32(resultado);
             }
         }
     }

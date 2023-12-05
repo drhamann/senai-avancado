@@ -31,14 +31,14 @@ public class PizzaService :
             TamanhoDePizza = Convert.ToInt32(objeto.TamanhoDePizza),
             Valor = objeto.Valor
         };
-        objeto.Id = PizzaDao.CriarPizza(pizzaVo);
+        objeto.Id = PizzaDao.CriarRegistro(pizzaVo);
         return objeto;
     }
 
     public List<Pizza> ObterTodos()
     {
         List<Pizza> pizzas = new List<Pizza>();
-        List<PizzaVo> pizzasBanco = PizzaDao.ObterPizzas();
+        List<PizzaVo> pizzasBanco = PizzaDao.ObterRegistros();
 
         foreach (PizzaVo pizzaVo in pizzasBanco)
         {

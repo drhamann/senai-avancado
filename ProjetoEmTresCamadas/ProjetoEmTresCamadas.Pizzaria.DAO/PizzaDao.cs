@@ -5,23 +5,24 @@ namespace ProjetoEmTresCamadas.Pizzaria.DAO;
 
 public class PizzaDao : BaseDao<PizzaVo>
 {
-    private const string TABELA_PIZZA = @"CREATE TABLE IF NOT EXISTS TB_PIZZA
+    private const string TABELA_PIZZA_NOME = "TB_PIZZA";
+
+    private const string TABELA_PIZZA = @$"CREATE TABLE IF NOT EXISTS {TABELA_PIZZA_NOME}
                 (
                     ID INTEGER PRIMARY KEY AUTOINCREMENT,
                     Sabor VARCHAR(50) not null,
                     Descricao VARCHAR(100),
-                    TAMANHODAPIZZA INTEGER,
-                    VALOR REAL
+                    TamanhoDePizza INTEGER,
+                    Valor REAL
                 )";
-    private const string INSERIR_PIZZA = @"
-                INSERT INTO TB_PIZZA (Sabor, Descricao, TAMANHODAPIZZA, VALOR)
-                VALUES (@Sabor, @Descricao, @TAMANHODAPIZZA, @VALOR)";
 
-    private const string SELECT_PIZZA = @"SELECT * FROM TB_PIZZA";
+    private const string INSERIR_PIZZA = @$"
+                INSERT INTO {TABELA_PIZZA_NOME} (Sabor, Descricao, TamanhoDePizza, Valor)
+                VALUES (@Sabor, @Descricao, @TamanhoDePizza, @Valor)";
 
-    public PizzaDao() : base(TABELA_PIZZA, SELECT_PIZZA, INSERIR_PIZZA)
-    {
-    }
+    private const string SELECT_PIZZA = @$"SELECT * FROM {TABELA_PIZZA_NOME}";
+
+    public PizzaDao() : base(TABELA_PIZZA, SELECT_PIZZA, INSERIR_PIZZA, TABELA_PIZZA_NOME) { }
 
     protected override PizzaVo CriarInstancia(SqliteDataReader sqliteDataReader)
     {
