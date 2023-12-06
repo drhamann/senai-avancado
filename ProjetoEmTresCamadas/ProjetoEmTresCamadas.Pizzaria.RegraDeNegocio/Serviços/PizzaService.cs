@@ -9,9 +9,9 @@ public class PizzaService :
     IAdicionar<Pizza>,
     IObter<Pizza>
 {
-    private PizzaDao PizzaDao { get; set; }
+    private IPizzaDao PizzaDao { get; set; }
 
-    public PizzaService(PizzaDao pizzaDao)
+    public PizzaService(IPizzaDao pizzaDao)
     {
         PizzaDao = pizzaDao;
     }

@@ -100,7 +100,6 @@ public class Exercicio02 : IExercicio02
 
         foreach (var sentimento in this.sentimentos)
         {
-            //Todo validar se está na data
             if (sentimento.Nome == nome)
                 sentimentos += $"\r\n {sentimento}";
         }
