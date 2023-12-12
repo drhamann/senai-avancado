@@ -37,8 +37,11 @@ namespace Aula07
         static string LerArquivo(string caminho)
         {
             // Resolver
-
-            return string.Empty;
+            if(File.Exists(caminho))
+            {
+                return File.ReadAllText(caminho);
+            }
+            throw new ArquivoNaoEncontradoException($"Arquivo não existe {caminho}.");
         }
 
 

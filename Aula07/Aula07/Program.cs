@@ -4,14 +4,19 @@ using System;
 
 Console.WriteLine("Aprendendo sobre exceções");
 
+Exercicio01 exercicio01 = new Exercicio01();
+Exercicio02 exercicio02 = new Exercicio02();
 
 try
 {
+    exercicio01.Executar();
+    exercicio02.Executar();
 
 } // Onde executa o código
 catch (ExceptionA ex) 
 {
     //Onde trata erro do tipo específico que tentou no try
+    Console.WriteLine(ex.ToString());
 }
 
 catch (ExceptionC ex) 

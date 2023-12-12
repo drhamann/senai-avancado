@@ -41,6 +41,11 @@ namespace Aula07
         }
         static double RealizarDivisao(int numerador, int denominador)
         {
+            if(numerador == 0  || denominador == 0)
+            {
+                throw new DivideByZeroException($"Não pode haver divisão por zero");
+            }
+
             return (double)numerador / denominador;
         }
     }
