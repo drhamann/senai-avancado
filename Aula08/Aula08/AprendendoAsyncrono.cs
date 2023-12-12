@@ -19,7 +19,7 @@ public class AprendendoAsyncrono
     {
         for (int i = 0; i < 10; i++)
         {
-            Console.WriteLine("Tread A" i);
+            Console.WriteLine("Tread A" + i);
         }
     }
 
@@ -27,7 +27,7 @@ public class AprendendoAsyncrono
     {
         for (int i = 10; i < 100; i++)
         {
-            Console.WriteLine("Tread A" i);
+            Console.WriteLine("Tread A" + i);
         }
     }
 }

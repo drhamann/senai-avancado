@@ -1,9 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-
-
+﻿
 AprendendoDelegate aprendendoDelegate = new AprendendoDelegate();
 
+aprendendoDelegate.Executar();
+
 AprendendoLambda aprendendoLambda = new AprendendoLambda();
+
+aprendendoLambda.Executar();
 
 AprendendoAsyncrono aprendendoAsyncrono = new AprendendoAsyncrono();

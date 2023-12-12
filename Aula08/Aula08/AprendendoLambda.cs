@@ -6,6 +6,7 @@ public class AprendendoLambda
     public void Executar()
     {
         Reverse rev = s => new string(s.Reverse().ToArray());
+
         Console.WriteLine(rev("a string"));
     }
 }
