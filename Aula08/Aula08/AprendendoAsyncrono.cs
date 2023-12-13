@@ -1,33 +1,41 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-public class AprendendoAsyncrono 
+public class AprendendoAsyncrono
 {
-
-    public void Executar()
+    public object EmExecucao { get; set; }
+    public AprendendoAsyncrono()
     {
-        Thread threadA = new Thread(ImprimaAteDez);
-
-        Thread threadB = new Thread(ImprimaDezAteCem);
-
-        threadA.Start();
-        threadB.Start();
-
-        Console.ReadLine();
+        EmExecucao = new object();
+    }
+    public Task Executar()
+    {
+        return Task.Run(async () =>
+        {
+            var resultadoDaSoma = await ImprimaAteDez();
+            ImprimaDezAteCem();
+        });
     }
 
-    private void ImprimaAteDez(object? obj)
+    private Task<int> ImprimaAteDez()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            Console.WriteLine("Tread A" + i);
-        }
+        var soma = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+              soma += i;
+            }
+        return Task.FromResult(soma);
     }
 
-    private void ImprimaDezAteCem(object? obj)
+    private Task ImprimaDezAteCem()
     {
-        for (int i = 10; i < 100; i++)
+        return Task.Run(() =>
         {
-            Console.WriteLine("Tread A" + i);
-        }
+            for (int i = 10; i < 100; i++)
+            {
+                Console.WriteLine("Tread B" + i);
+                Thread.Sleep(100);
+            }
+        });
     }
 }

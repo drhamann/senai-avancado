@@ -2,17 +2,17 @@
 using Aula08;
 
 AprendendoDelegate aprendendoDelegate = new AprendendoDelegate();
-
-aprendendoDelegate.Executar();
-
 AprendendoLambda aprendendoLambda = new AprendendoLambda();
-
-aprendendoLambda.Executar();
-
 AprendendoAsyncrono aprendendoAsyncrono = new AprendendoAsyncrono();
-
 CalculoInss calculoInss = new CalculoInss();
 
-calculoInss.Executar();
+
+//aprendendoDelegate.Executar();
+//aprendendoLambda.Executar();
+//await aprendendoAsyncrono.Executar();
+//calculoInss.Executar();
+
+FizzBuzzAssincrono fizzBuzzAssincrono = new FizzBuzzAssincrono();
+await fizzBuzzAssincrono.Executar();
 
 Console.ReadKey();
