@@ -16,14 +16,17 @@ namespace Aula08
             Thread fizzThread = new Thread(Fizz);
             Thread buzzThread = new Thread(Buzz);
             Thread fizzBuzzThread = new Thread(FizzBuzz);
+            Thread naofizzBuzzThread = new Thread(NaoFizzBuzz);
 
             fizzThread.Start();
             buzzThread.Start();
             fizzBuzzThread.Start();
+            naofizzBuzzThread.Start();
 
             fizzThread.Join();
             buzzThread.Join();
             fizzBuzzThread.Join();
+            naofizzBuzzThread.Join();
 
             return Task.CompletedTask;
         }
@@ -80,8 +83,27 @@ namespace Aula08
                         currentNumber++;
                         continue;
                     }
-                    Console.WriteLine(currentNumber);
-                    currentNumber++;
+                }
+
+                Thread.Sleep(10);
+            }
+        }
+
+        static void NaoFizzBuzz()
+        {
+            while (true)
+            {
+                lock (lockObject)
+                {
+                    if (currentNumber > maxNumber)
+                        break;
+                    if (currentNumber % 3 != 0
+                        && currentNumber % 5 != 0)
+                    {
+                        Console.WriteLine(currentNumber + " Nao é FizzBuzz");
+                        currentNumber++;
+                        continue;
+                    }
                 }
 
                 Thread.Sleep(10);
