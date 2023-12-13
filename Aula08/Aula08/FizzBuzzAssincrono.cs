@@ -30,7 +30,7 @@ namespace Aula08
 
             return Task.CompletedTask;
         }
-        static void Fizz()
+        void Fizz()
         {
             while (true)
             {
@@ -49,7 +49,7 @@ namespace Aula08
                 Thread.Sleep(10);
             }
         }
-        static void Buzz()
+        void Buzz()
         {
             while (true)
             {
@@ -68,7 +68,7 @@ namespace Aula08
             }
         }
 
-        static void FizzBuzz()
+        void FizzBuzz()
         {
             while (true)
             {
@@ -89,7 +89,7 @@ namespace Aula08
             }
         }
 
-        static void NaoFizzBuzz()
+        void NaoFizzBuzz()
         {
             while (true)
             {
